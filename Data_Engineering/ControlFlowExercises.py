@@ -3,7 +3,7 @@ print("\nQ1a\n")
 x = [2, 5, 4, 87, 34, 2, 1, 31, 103, 99]
 
 # A1a:
-print(x[5:])
+print(x[:5])
 
 
 
@@ -120,7 +120,3 @@ while check:
         else:
             print('Not Prime')
         check = False
-
-
-
-

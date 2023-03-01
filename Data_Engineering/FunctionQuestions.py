@@ -25,7 +25,9 @@ print("\nQ1b\n")
 
 
 def check_if_factors(num1, num2):
-    if num1 > num2:
+    if num1 == 0 or num2 == 0:
+        return False
+    elif num1 > num2:
         if num1 % num2 == 0:
             return True
     else:
@@ -34,7 +36,7 @@ def check_if_factors(num1, num2):
     return False
 
 
-print(check_if_factors(10, 21))
+print(check_if_factors(10, 2))
 # -------------------------------------------------------------------------------------- #
 
 print("\nQ2a\n")
