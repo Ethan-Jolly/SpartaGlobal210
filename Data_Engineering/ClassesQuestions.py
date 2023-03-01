@@ -3,6 +3,7 @@ print("\nQ1a\n")
 
 # A1a:
 
+
 class Country():
     def __init__(self, continent, climate, language):
         self.continent = continent
@@ -14,6 +15,7 @@ print("\nQ1b\n")
 # Q1b: Create a subclass of a city which inherits from the country class
 
 # A1b:
+
 
 class City(Country):
     def __init__(self, city_name, continent, climate, language):
@@ -51,6 +53,8 @@ class Number:
             return False
 
 # A2a:
+
+
 list_of_primes = []
 for number in list_of_numbers:
     num = Number(number)
