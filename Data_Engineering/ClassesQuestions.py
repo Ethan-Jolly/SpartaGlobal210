@@ -4,7 +4,7 @@ print("\nQ1a\n")
 # A1a:
 
 
-class Country():
+class Country:
     def __init__(self, continent, climate, language):
         self.continent = continent
         self.climate = climate
@@ -83,7 +83,7 @@ print("\nQ3a\n")
 # Q3a: Fix the following class and subclass (uncomment by selecting all rows and pressing CTRL + /)
 
 
-class Boss(object):
+class Boss:
     def __init__(self, name, attitude, behaviour, face):
         self.name = name
         self.attitude = attitude
@@ -110,7 +110,7 @@ class GoodBoss(Boss):
 
 # A3a:
 
-gb = GoodBoss('Peter','Calm','Good','Pale')
+gb = GoodBoss('Peter','Calm','Good','face1')
 
 gb.encourage()
 print(gb.get_attitude())
