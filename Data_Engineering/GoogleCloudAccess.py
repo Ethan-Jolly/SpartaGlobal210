@@ -10,8 +10,8 @@ class AccessGCPStorage:
         self.bucket = self.client.get_bucket(bucket_name)
 
     def download_file(self, file_on_cloud, local_file):
-        blob = self.bucket.blob(local_file)
-        blob.download_to_filename(file_on_cloud)
+        blob = self.bucket.blob(file_on_cloud)
+        blob.download_to_filename(local_file)
 
     def read_file(self, cloud_file):
         blob = self.bucket.blob(cloud_file)
@@ -26,7 +26,7 @@ class AccessGCPStorage:
 def main():
     access_gcp = AccessGCPStorage('keys/gcp_storage_key.json')
     access_gcp.upload_file('GCPBucketTest', 'GCPBucketTest.txt')
-    access_gcp.download_file('ice3.png', 'ice3.png')
+    access_gcp.download_file('GCPBucketTest', 'GCPBucketTest')
 
     print(access_gcp.read_file('GCPBucketTest'))
 
