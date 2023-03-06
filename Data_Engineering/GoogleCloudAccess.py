@@ -25,8 +25,8 @@ class AccessGCPStorage:
 
 def main():
     access_gcp = AccessGCPStorage('keys/gcp_storage_key.json')
-    access_gcp.upload_file('GCPBucketTest', 'GCPBucketTest.txt')
-    access_gcp.download_file('GCPBucketTest', 'GCPBucketTest')
+    access_gcp.upload_file('GCPBucketTest.txt', 'GCPBucketTest.txt')
+    access_gcp.download_file('GCPBucketTest.txt', 'GCPBucketTest.txt')
 
     print(access_gcp.read_file('GCPBucketTest'))
 
