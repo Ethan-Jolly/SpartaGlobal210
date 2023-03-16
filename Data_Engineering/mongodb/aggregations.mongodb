@@ -1,0 +1,81 @@
+//In the context of databases, aggregation is  the analysis and summary of data
+
+// An aggregation stage is an aggregation operation that's performed on the data and does 
+// not permanently alter the source
+
+// Aggregation Pipeline :
+// a series of stages completed one at a time in order
+
+// Data can be Filtered, Sorted , Grouped and Transformed
+
+//Common Stages
+// $match : Filters for the data that matches criteria
+// $group : Groups documents based on criteria
+// $sort : Puts the documents in a specific order
+
+// note : syntax for each stage depends on the stage
+
+use('sample_airbnb')
+
+db.listingsAndReviews.find(
+    {bedrooms:5},
+    {name: 1,property_type: 1,room_type: 1,
+    bedrooms: 1,beds: 1,amenities: 1,price: 1,
+    number_of_reviews: 1}
+)
+// Example for grouping by bedrooms, then counting 
+// the number of properties with that number of 
+// rooms
+use('sample_airbnb')
+db.listingsAndReviews.aggregate([
+    {
+
+        $match: {
+          bedrooms:{$lte:10}
+        }
+    },{
+        $group: {
+          _id: "$bedrooms", // field path
+          numberOfproperties: {
+            $count: {}
+          }
+        }
+    },{
+        $sort:{
+            _id: 1
+        }
+    }
+]
+)
+
+use('sample_airbnb')
+db.listingsAndReviews.aggregate([
+    {
+
+        $match: {
+          bedrooms:{$lte:10}
+        }
+    },{
+        $project: {
+          name: 1,property_type: 1,room_type: 1,
+        bedrooms: 1,beds: 1,amenities: 1,price: 1,
+        number_of_reviews: 1
+        }
+    },{
+        $sort:{
+            price:1
+        }
+    },{
+        $set:{
+            NewSeasonPrice: {
+                $round: [
+                    {$multiply:[1.10, "$price"]},
+                    2
+                ]
+            }
+        }
+    },{
+        $out: "my_collection_with_new_prices"
+    }
+]
+)
