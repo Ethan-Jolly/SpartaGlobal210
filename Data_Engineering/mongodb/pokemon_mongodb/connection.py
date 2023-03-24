@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import requests
 import random
 
+
 class Client:
     def __init__(self, MONGODB_URI, db_name, collection_name):
         self.MONGODB_URI = MONGODB_URI
